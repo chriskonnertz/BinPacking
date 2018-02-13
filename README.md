@@ -3,7 +3,7 @@
 Examples of algorithms that solve the bin packing problem. Implemented in Kotlin.
 A demo is included (`Demo.kt`).
 
-Learn more about the algorithm: https://en.wikipedia.org/wiki/Bin_packing_problem
+Learn more about the problem and the algorithms: https://en.wikipedia.org/wiki/Bin_packing_problem
 
 ## Implemented algorithms
 
