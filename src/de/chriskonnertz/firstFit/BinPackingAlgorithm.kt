@@ -28,28 +28,36 @@ abstract class BinPackingAlgorithm {
      */
     fun solve(availableLengths: Array<Int>, lengths: List<Int>): Result {
         var firstFit: BinPackingAlgorithm
-        var minTotalRest = Int.MAX_VALUE
+        var minEvalValue = Int.MAX_VALUE
         var bestLengthBins: ArrayList<Bin> = arrayListOf()
 
         for (availableLength: Int in availableLengths) {
+            // Ignore lengths that are longer than the availableLength (= the bin capacity)
+            if (availableLength < lengths.max()!!) {
+                continue
+            }
+
             firstFit = createInstance()
             firstFit.binCapacity = availableLength
 
             val lengthBins = firstFit.solveForCapacity(lengths)
 
-            if (firstFit.getTotalRestValue() <= minTotalRest) {
-                minTotalRest = firstFit.getTotalRestValue()
+            // Find the available length that has the smallest evaluation value
+            if (firstFit.getEvaluation() <= minEvalValue) {
+                minEvalValue = firstFit.getEvaluation()
                 bestLengthBins = lengthBins
             }
         }
 
-        return Result(minTotalRest, bestLengthBins)
+        return Result(minEvalValue, bestLengthBins)
     }
 
     /**
-     * Getter for the total rest property
+     * Returns a value that is used for the evaluation of the result.
+     * Smaller value are considered to be preferable.
      */
-    private fun getTotalRestValue(): Int {
+    protected open fun getEvaluation(): Int {
+        // Per default, use the total rest for the evaluation
         return this.totalRest
     }
 }

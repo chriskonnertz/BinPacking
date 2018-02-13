@@ -34,7 +34,7 @@ open class FirstFit : BinPackingAlgorithm() {
                 }
             }
 
-            // If there was no bin with enough space, create a new bin
+            // If there was not a bin with enough space, create a new bin
             if (!found) {
                 val bin = Bin(binCapacity)
                 bin.addPart(length)
