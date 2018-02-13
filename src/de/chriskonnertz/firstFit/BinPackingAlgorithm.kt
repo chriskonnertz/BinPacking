@@ -32,7 +32,7 @@ abstract class BinPackingAlgorithm {
         var bestLengthBins: ArrayList<Bin> = arrayListOf()
 
         for (availableLength: Int in availableLengths) {
-            // Ignore lengths that are longer than the availableLength (= the bin capacity)
+            // Ignore lengths that are longer than the available length (= the bin capacity)
             if (availableLength < lengths.max()!!) {
                 continue
             }
