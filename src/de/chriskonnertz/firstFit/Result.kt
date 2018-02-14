@@ -3,15 +3,15 @@ package de.chriskonnertz.firstFit
 /**
  * This is a container object for the result of the bin packaging algorithm.
  */
-class Result(val minEvalValue: Int, val bestLengthBins: ArrayList<Bin>) {
+class Result(val minEvalValue: Int, val bestBins: ArrayList<Bin>) {
     /** Prints out information about the bin */
     fun print() {
         println("Optimization done.")
         println("Result:")
 
-        if (bestLengthBins.isNotEmpty()) {
-            println("Best bin capacity: " + bestLengthBins.first().capacity +
-                    " - Used bins: " + bestLengthBins.size +
+        if (bestBins.isNotEmpty()) {
+            println("Best bin capacity: " + bestBins.first().capacity +
+                    " - Used bins: " + bestBins.size +
                     " - Evaluation value: " + minEvalValue)
             printBins()
         } else {
@@ -21,7 +21,7 @@ class Result(val minEvalValue: Int, val bestLengthBins: ArrayList<Bin>) {
 
     /** Prints out ("visualises") the bins and their parts */
     fun printBins() {
-        for ((index, bin: Bin) in bestLengthBins.withIndex()) {
+        for ((index, bin: Bin) in bestBins.withIndex()) {
             println((index + 1).toString() + ". Bin" +
                     " - Unused space: " + bin.getFreeSpace() +
                     " - Parts: " + bin.getAllParts())

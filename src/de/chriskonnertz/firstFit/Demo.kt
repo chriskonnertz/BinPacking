@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
     var result: Result
     /** These are the available capacities (sizes) of the bins */
     val availableBinCapacities = arrayOf(5000, 6000, 70000)
-    /** These are the lengths (parts) that we want to put into bins */
+    /** These are the parts that we want to put into bins */
     val parts: List<Int> = listOf(1000, 2000, 3000, 4000)
 
     var stringified = ""
