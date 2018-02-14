@@ -18,29 +18,29 @@ abstract class BinPackingAlgorithm {
     /**
      * This method has to be implemented by the concrete algorithm class.
      * It executes the algorithm for a specific bin capacity.
-     * It returns an array list wih bins that hold the lengths (parts).
+     * It returns an array list wih bins that hold the parts.
      */
-    abstract fun solveForCapacity(lengths: List<Int>): ArrayList<Bin>
+    abstract fun solveForCapacity(parts: List<Int>): ArrayList<Bin>
 
     /**
      * This method uses the concrete algorithm class to execute the optimization
-     * for every available lengths (bin capacity)
+     * for every available bin size (bin capacity)
      */
-    fun solve(availableLengths: Array<Int>, lengths: List<Int>): Result {
+    fun solve(availableBinCapacities: Array<Int>, parts: List<Int>): Result {
         var firstFit: BinPackingAlgorithm
         var minEvalValue = Int.MAX_VALUE
         var bestLengthBins: ArrayList<Bin> = arrayListOf()
 
-        for (availableLength: Int in availableLengths) {
-            // Ignore lengths that are longer than the available length (= the bin capacity)
-            if (availableLength < lengths.max()!!) {
+        for (availableBinCapacity: Int in availableBinCapacities) {
+            // Ignore lengths that are longer than the available bin capacity
+            if (availableBinCapacity < parts.max()!!) {
                 continue
             }
 
             firstFit = createInstance()
-            firstFit.binCapacity = availableLength
+            firstFit.binCapacity = availableBinCapacity
 
-            val lengthBins = firstFit.solveForCapacity(lengths)
+            val lengthBins = firstFit.solveForCapacity(parts)
 
             // Find the available length that has the smallest evaluation value
             if (firstFit.getEvaluation() <= minEvalValue) {

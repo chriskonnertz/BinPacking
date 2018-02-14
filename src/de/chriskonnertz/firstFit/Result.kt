@@ -10,21 +10,21 @@ class Result(val minEvalValue: Int, val bestLengthBins: ArrayList<Bin>) {
         println("Result:")
 
         if (bestLengthBins.isNotEmpty()) {
-            println("Best length: " + bestLengthBins.first().capacity +
+            println("Best bin capacity: " + bestLengthBins.first().capacity +
                     " - Used bins: " + bestLengthBins.size +
                     " - Evaluation value: " + minEvalValue)
-            printBinsAndParts()
+            printBins()
         } else {
-            println("No result available. Add at least one available length that is greater than all lengths (parts).")
+            println("No result available. Add at least one available bin capacity that is greater than all parts.")
         }
     }
 
     /** Prints out ("visualises") the bins and their parts */
-    fun printBinsAndParts() {
+    fun printBins() {
         for ((index, bin: Bin) in bestLengthBins.withIndex()) {
             println((index + 1).toString() + ". Bin" +
-                    " - Parts: " + bin.getAllParts() +
-                    " - Unused space: " + bin.getRestLength())
+                    " - Unused space: " + bin.getFreeSpace() +
+                    " - Parts: " + bin.getAllParts())
         }
     }
 }
