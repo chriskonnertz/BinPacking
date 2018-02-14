@@ -25,6 +25,8 @@ abstract class BinPackingAlgorithm {
     /**
      * This method uses the concrete algorithm class to execute the optimization
      * for every available bin size (bin capacity)
+     * [availableBinCapacities] is an array with the possible bin capacities and
+     * [parts] is a list of the parts you want to put into bins.
      */
     fun solve(availableBinCapacities: Array<Int>, parts: List<Int>): Result {
         var firstFit: BinPackingAlgorithm
