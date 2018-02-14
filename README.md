@@ -1,6 +1,6 @@
 # BinPacking
 
-Examples of algorithms that solve the bin packing problem. Implemented in Kotlin.
+Well documented examples of algorithms that solve the bin packing problem. Implemented in Kotlin.
 A demo is included (`Demo.kt`).
 
 "In the bin packing problem, objects of different volumes must be packed into a finite number of bins or containers 
@@ -52,3 +52,5 @@ Best bin capacity: 5000 - Used bins: 2 - Evaluation value: 0
 
 Process finished with exit code 0
 ```
+
+> Note: The demo is similar to the example code in the "usage" section but more detailed
