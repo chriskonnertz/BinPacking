@@ -29,10 +29,10 @@ abstract class BinPackingAlgorithm {
     fun solve(availableBinCapacities: Array<Int>, parts: List<Int>): Result {
         var firstFit: BinPackingAlgorithm
         var minEvalValue = Int.MAX_VALUE
-        var bestLengthBins: ArrayList<Bin> = arrayListOf()
+        var bestBins: ArrayList<Bin> = arrayListOf()
 
         for (availableBinCapacity: Int in availableBinCapacities) {
-            // Ignore lengths that are longer than the available bin capacity
+            // Ignore available bin capacity that are not big enough to hold the biggest part
             if (availableBinCapacity < parts.max()!!) {
                 continue
             }
@@ -40,16 +40,16 @@ abstract class BinPackingAlgorithm {
             firstFit = createInstance()
             firstFit.binCapacity = availableBinCapacity
 
-            val lengthBins = firstFit.solveForCapacity(parts)
+            val bins = firstFit.solveForCapacity(parts)
 
-            // Find the available length that has the smallest evaluation value
+            // Find the available bin capacity that has the smallest evaluation value
             if (firstFit.getEvaluation() <= minEvalValue) {
                 minEvalValue = firstFit.getEvaluation()
-                bestLengthBins = lengthBins
+                bestBins = bins
             }
         }
 
-        return Result(minEvalValue, bestLengthBins)
+        return Result(minEvalValue, bestBins)
     }
 
     /**
