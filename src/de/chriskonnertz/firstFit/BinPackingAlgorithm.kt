@@ -34,7 +34,7 @@ abstract class BinPackingAlgorithm {
         var bestBins: ArrayList<Bin> = arrayListOf()
 
         for (availableBinCapacity: Int in availableBinCapacities) {
-            // Ignore available bin capacity that are not big enough to hold the biggest part
+            // Ignore any available bin capacity that is not big enough to hold the biggest part
             if (availableBinCapacity < parts.max()!!) {
                 continue
             }
@@ -56,7 +56,7 @@ abstract class BinPackingAlgorithm {
 
     /**
      * Returns a value that is used for the evaluation of the result.
-     * Smaller value are considered to be preferable.
+     * Smaller values are considered to be preferable.
      */
     protected open fun getEvaluation(): Int {
         // Per default, use the total rest for the evaluation
